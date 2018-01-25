@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-xs-6">
+        <div class="contact">
+            <img
+                class="contact-item"
+                src="assets/contacts.png"
+                alt="contact"
+            >
+            <h4 class="contact-item">Our contact info</h4>
+            <div class="contact-item">
+                <img src="assets/phone_number.png">
+                <span class="contact-info">+38 (063) 000-00-00</span>
+            </div>
+            <div class="contact-item">
+                <img src="assets/Skype.png">
+                <span class="contact-info">triathalex</span>
+            </div>
+            <div class="contact-item">
+                <img src="assets/mail.png">
+                <span class="contact-info">alexander.yuvkovetskyi@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <img src="assets/pin.png">
+                <span class="contact-info">Vinnytsia, Ukraine</span>
+            </div>
+        </div>
+    </div>
+    <div class="map col-xs-6 pull-right">
+        <agm-map
+            [latitude]="lat"
+            [longitude]="lng"
+            [zoom]="zoom"
+            [disableDefaultUI]="false"
+            [zoomControl]="true"
+        >
+
+            <agm-marker
+                *ngFor="let m of markers; let i = index"
+                [latitude]="m.lat"
+                [longitude]="m.lng"
+                [label]="m.label"
+            >
+
+            </agm-marker>
+
+        </agm-map>
+    </div>
+</div>

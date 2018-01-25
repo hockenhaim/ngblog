@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="container">
+    <div class="col-xs-12 col-md-8" *ngIf="article">
+      <div class="row article">
+        <h2 class="title">{{article.title}}</h2>
+        <p class="author">{{article.added}} by <strong>{{user}}</strong></p>
+        <img class="img-response" src="{{ article.profile_picture }}" alt="{{ article.title }}">
+        <p class="text" id="text"></p>
+      </div>
+      <div class="row" class="comments">
+        <h3 class="comments-header">Comments section</h3>
+        <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="comment">Comment text</label>
+                <textarea type="text" id="comment" formControlName="comment" class="form-control" rows="10"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <button type="submit" class="btn btn-success" [disabled]="!commentForm.valid">Save</button>
+            </div>
+          </div>
+        </form>
+        <app-main-comment-detail [article]="article"></app-main-comment-detail>
+      </div>
+    </div>
+    <div class="col-xs-4 feed">
+      <h3 class="feed-header">News feed</h3>
+      <div *ngFor="let article of articles; let i = index;">
+        <a 
+          *ngIf="i < 6" class="list-group-item" 
+          [routerLink]="['/article', article.aid]"
+          routerLinkActive="active">
+          <div>
+              <h4 class="list-group-item-heading">{{ article.title }}</h4>
+          </div>
+          <div>
+              <h6>{{article.added}}</h6>
+          </div>
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</div>

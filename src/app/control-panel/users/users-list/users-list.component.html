@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button
+            class="btn btn-success"
+            (click)="addNewUser()"
+        >
+            New user
+        </button>
+    </div>
+</div>
+<hr>
+<div *ngIf="users" class="row">
+    <div class="col-xs-12">
+        <app-user-item
+            *ngFor="let userElement of users | paginate: { itemsPerPage: 10, currentPage: p } "
+            [user]="userElement"
+        ></app-user-item>
+        <pagination-controls *ngIf="users.length > 10" (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>

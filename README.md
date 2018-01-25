@@ -1,27 +1,24 @@
-# Project
+# !Empty blog
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+It's a simple blog with basic CRUD operations and role distributions built with Angular 5 framework and Firebase cloud storage.
 
-## Development server
+## Todo list for the next few days
+Fix some bugs with permission system, implement account section and deploy application to Firebase with GitHub.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Getting Started
 
-## Code scaffolding
+To run this project at first you have to install Node and Angular CLI. After that run:
+```
+npm install
+```
+in the project root directory. Now you can build the application with:
+```
+ng serve
+``` 
+command. Once it done, just navigate to ``` http://localhost:4200/ ```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Demo
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+I'll provide it as soon as possible.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

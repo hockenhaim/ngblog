@@ -1,0 +1,40 @@
+<div class="login-body">
+  <button class="backBtn" routerLink="/">Back</button>
+  <a class="login-logo" routerLink="/">
+    <img src="assets/logo.png" alt="logo" title="logo" />
+  </a>
+  <div id="login-box">
+    <div class="left">
+      <div class="menu">
+          <span class="title" [ngClass]="{active: title === 'log in'}" (click)="toggleForm('log in')">Log in</span>
+          <span class="title" [ngClass]="{active: title === 'sign up'}" (click)="toggleForm('sign up')">Sign Up</span>
+      </div>
+      <div *ngIf="title === 'sign up'">
+        <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+          <input type="text" name="name" formControlName="name" placeholder="Name"/>
+          <input type="email" name="signUpEmail" formControlName="signUpEmail" placeholder="E-mail" email/>
+          <input type="password" name="password1" formControlName="password" minlength="5" placeholder="Password"/>
+          <input type="password" name="password2" formControlName="confirmPassword" minlength="5" placeholder="Retype password" />
+          <div class="alert alert-danger" *ngIf="signUpForm.controls.confirmPassword.errors?.MutchPassword">Password not match</div>
+          
+          <input type="submit" name="signup_submit" value="Sign me up" [disabled]="!signUpForm.valid" />
+        </form>
+      </div>
+      <div *ngIf="title === 'log in'">
+        <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+          <input type="text" name="email" formControlName="signInEmail" placeholder="E-mail" email/>
+          <input type="password" name="password" formControlName="signInPassword" minlength="5" placeholder="Password"/>
+          
+          <input type="submit" name="login_submit" value="Log in" (click)="onSignIn()" [disabled]="!signInForm.valid" />
+          <button class="social-signin google google-mob" (click)="signInWithGoogle()">Log in with Google+</button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="right">
+      <span class="loginwith">Sign in with<br />social network</span>
+      <button class="social-signin google" (click)="signInWithGoogle()">Log in with Google+</button>
+    </div>
+    <div class="or">OR</div>
+  </div>
+</div>

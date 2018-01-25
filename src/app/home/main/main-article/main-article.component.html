@@ -1,0 +1,10 @@
+<div class="row item">
+  <div class="col-xs-12 col-md-5" image>
+      <a [routerLink]="['/article', article.aid]"><img src="{{article.profile_picture}}" alt="" class="img-responsive article-img" ></a>
+  </div>
+  <div class="col-xs-12 col-md-7">
+      <a [routerLink]="['/article', article.aid]"><h4 class="title">{{article.title}}</h4></a>
+      <p class="author">{{article.added}} by <strong>{{authorName}}</strong></p>
+      <a [routerLink]="['/article', article.aid]"><button class="action-button continue-btn">More detailed</button></a>
+  </div>
+</div>

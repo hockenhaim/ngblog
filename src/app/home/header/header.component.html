@@ -1,0 +1,51 @@
+<div class="head">
+
+  <!-- start header	-->
+  <header class="main-header">
+    <div class="logo">
+      <label class='hamburger' for="burger">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </label>
+      <a class="site-logo" routerLink="/">
+        <img src="assets/logo.png" alt="logo" title="logo" />
+      </a>
+      <span></span>
+    </div>
+    <input type="checkbox" class="mobile-menu" id="burger">
+    <ul id="nav" class="nav">
+      <li class="nav-item">
+        <a routerLink="/">HOME</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/login">PERSONAL AREA</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/contact">CONTACTS</a>
+      </li>
+      <li class="nav-item">
+        <a href="tel:+380630000000">
+          <img class="phone-img" src="../../../assets/phone_logo.png" />
+          <span class="phone-text">+38 (063) 000-00-00</span>
+        </a>
+      </li>
+    </ul>
+  </header>
+  <!-- end header	-->
+  <div class="head_main">
+    <h1 class="head__main__caption">Welcome!</h1>
+    <h2 class="head__middling__caption">It's definitely the most pointless blog ever. Well, it was just a joke, so let's take a look at these gorgeous photos. Once you've done, make sure to scroll down!
+    </h2>
+    <ngx-carousel
+      [inputs]="carouselTile">
+ 
+            <ngx-tile style="box-shadow: none" NgxCarouselItem *ngFor="let Tile of carouselTileItems">
+                <img class="carousel-image" src="{{ Tile }}"  alt="image detais" />
+            </ngx-tile>
+ 
+          <button NgxCarouselPrev class='leftRs'>&lt;</button>
+          <button NgxCarouselNext class='rightRs'>&gt;</button>
+    </ngx-carousel>
+  </div>
+</div>

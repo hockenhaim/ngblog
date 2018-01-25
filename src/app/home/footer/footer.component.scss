@@ -1,0 +1,57 @@
+.row {
+  margin: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+
+.footer {
+  background-color: #2196f3;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.logo {
+  text-align: center;
+  padding: 50px 0px;
+}
+
+.nav {
+	display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.nav a {  
+  color: white;
+	font-size: 1.125em;
+  &:hover {
+    color: white;
+    text-decoration: underline;
+    background-color: transparent;
+  }
+  &:focus {
+    color: white;
+    font-weight: bold;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+}
+
+
+.copyright {
+  text-align: center;
+  font-size: 1.2em;
+  color: #b2f6ff;
+  padding: 60px;
+}
+
+.author-link {
+  color: white;
+  &:hover {
+    color: white;
+  }
+}

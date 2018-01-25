@@ -1,0 +1,10 @@
+.article-image {
+  max-height: 50px; 
+  max-width: 83px;
+}
+
+@media (max-width: 1025px) {
+  .article-image {
+    display: none;
+  }
+}
