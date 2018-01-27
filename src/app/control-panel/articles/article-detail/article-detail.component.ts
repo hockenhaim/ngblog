@@ -82,7 +82,6 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.author);
     const updatedArticle = {
       'title': this.articleForm.value['title'],
       'profile_picture': this.articleForm.value['imagePath'],

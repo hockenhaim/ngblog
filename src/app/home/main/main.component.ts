@@ -60,7 +60,11 @@ export class MainComponent implements OnInit, DoCheck {
   }
 
   onShare() {
-    this.router.navigate(['/control-panel/articles/new']);
+    if (this.user) {
+      this.router.navigate(['/control-panel/articles/new']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
 }

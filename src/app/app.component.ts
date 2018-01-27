@@ -1,3 +1,4 @@
+import { Router, NavigationEnd } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(private router: Router) {
+    router.events
+      .filter(event => event instanceof NavigationEnd)
+      .subscribe((event: NavigationEnd) => {
+        window.scroll(0, 0);
+      });
+  }
 }

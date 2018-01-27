@@ -79,8 +79,8 @@ export class LoginComponent implements OnInit, DoCheck {
 
   onSignIn(email, password) {
     this.authUser = {
-      'email': this.signInForm.value['email'],
-      'password': this.signInForm.value['password'],
+      'email': this.signInForm.value['signInEmail'],
+      'password': this.signInForm.value['signInPassword'],
     }
     this.authService.signIn(this.authUser.email, this.authUser.password);
   }

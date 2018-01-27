@@ -19,11 +19,17 @@ export class AdminHeaderComponent implements OnInit {
     this.authService.getAuthState().flatMap(
       (user) => {
         this.user = user;
-        return this.userService.getUser(user.uid);
+        if (this.user) {
+          return this.userService.getUser(user.uid);
+        } else {
+          return [{}];
+        }
       }).subscribe(
         (item) => {
           this.role = item;
-          this.role = this.role[0].role;
+          if (this.role[0]) {
+            this.role = this.role[0].role;
+          }
         }
       );
   }

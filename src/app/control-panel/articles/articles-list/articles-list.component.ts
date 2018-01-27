@@ -9,7 +9,7 @@ import { UserService } from '../../users/user.service';
   templateUrl: './articles-list.component.html',
   styleUrls: ['./articles-list.component.scss']
 })
-export class ArticlesListComponent implements OnInit, DoCheck {
+export class ArticlesListComponent implements OnInit {
   articles: any;
   userArticles = [];
   user;
@@ -26,19 +26,25 @@ export class ArticlesListComponent implements OnInit, DoCheck {
     this.authService.getAuthState().flatMap(
       (user) => {
         this.user = user;
-        return this.userService.getUser(user.uid);
+        if (this.user) {
+          return this.userService.getUser(user.uid);
+        } else {
+          return [{}];
+        }
       }).subscribe(
       (item) => {
         this.uid = item;
-        this.role = this.uid[0].role;
-        this.uid = this.uid[0].uid;
-        console.log(this.role);
+        if (this.uid[0]) {
+          this.role = this.uid[0].role;
+          this.uid = this.uid[0].uid;
+        }
       }
       );
   }
 
   ngDoCheck() {
     this.articles = this.articleService.getArticles();
+    this.userArticles = [];
     if (this.uid && this.articles) {
       let count = 0;
       this.articles.forEach(
@@ -47,14 +53,11 @@ export class ArticlesListComponent implements OnInit, DoCheck {
             count++;
             while (this.userArticles.length < count) {
               this.userArticles.push(val);
-              console.log(this.role);
-              console.log(this.articles);
             }
           }
         }
       )
     }
-
   }
 
   addNewArticle() {

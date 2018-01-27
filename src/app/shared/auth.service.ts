@@ -72,7 +72,6 @@ export class AuthService {
               role: 'user',
               uid: user.uid
             }).then(r => {
-              console.log('Write u data!');
             });
           }
         }
