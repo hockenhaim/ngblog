@@ -23,7 +23,6 @@ export class AdminHeaderComponent implements OnInit {
       }).subscribe(
         (item) => {
           this.role = item;
-          console.log(this.role[0].role);
           this.role = this.role[0].role;
         }
       );

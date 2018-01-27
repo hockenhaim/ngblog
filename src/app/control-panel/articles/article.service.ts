@@ -10,7 +10,10 @@ export class ArticleService {
 
   constructor(private _db: AngularFireDatabase) {
     this._db.list('/articles').valueChanges().subscribe(
-      (item ) => this.articles = item
+      (item ) => {
+        this.articles = item;
+        this.articles.reverse();
+      }
     );
     this._db.list('/comments/').valueChanges().subscribe(
       (item ) =>this.comments = item

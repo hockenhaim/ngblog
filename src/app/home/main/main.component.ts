@@ -49,7 +49,6 @@ export class MainComponent implements OnInit, DoCheck {
           }
         }
       );
-      this.articles = this.articleService.getArticles();
   }
 
   reverse() {
@@ -58,7 +57,6 @@ export class MainComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     this.articles = this.articleService.getArticles();
-  
   }
 
   onShare() {

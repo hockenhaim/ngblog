@@ -9,12 +9,15 @@ import { UserService } from '../../../users/user.service';
 export class ArticleItemComponent implements OnInit {
   @Input() article;
   author;
+  title;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     if (this.article.title.length > 38) {
-      this.article.title = this.article.title.slice(0, 37) + '...';
+      this.title = this.article.title.slice(0, 37) + '...';
+    } else {
+      this.title = this.article.title;
     }
     this.userService.getUser(this.article.author).subscribe(
       (item) => {
