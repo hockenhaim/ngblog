@@ -33,11 +33,12 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   height: 100vh;
+  min-height: 800px;
 }
 
 #login-box {
   position: relative;
-  margin: 10% auto;
+  margin: 5% auto;
   width: 600px;
   height: 500px;
   background: #FFF;

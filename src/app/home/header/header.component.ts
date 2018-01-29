@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit, DoCheck {
     ];
  
     this.carouselTile = {
-      grid: {xs: 2, sm: 3, md: 4, lg: 5, all: 0},
+      grid: {xs: 2, sm: 3, md: 4, lg: 4, all: 0},
       slide: 2,
       speed: 400,
       animation: 'lazy',
