@@ -38,7 +38,6 @@ export class ArticleService {
 
   addComment(newComment) {
     this._db.list('/comments/').push(newComment);
-    console.log('done');
   }
 
   deleteArticle(aid) {

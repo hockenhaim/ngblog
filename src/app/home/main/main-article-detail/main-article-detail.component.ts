@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../control-panel/users/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../../shared/auth.service';
+import 'rxjs/add/operator/first';
 
 @Component({
   selector: 'app-main-article-detail',
@@ -11,6 +12,7 @@ import { AuthService } from '../../../shared/auth.service';
   styleUrls: ['./main-article-detail.component.scss']
 })
 export class MainArticleDetailComponent implements OnInit, DoCheck {
+  textSection;
   activeUser;
   articles;
   article;
@@ -24,8 +26,22 @@ export class MainArticleDetailComponent implements OnInit, DoCheck {
     private authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.getAuthState().subscribe(
-      (user) => this.activeUser = user);
+    this.authService.getAuthState().flatMap(
+      (user) => {
+        this.activeUser = user;
+        if (this.activeUser) {
+          return this.userService.getUser(this.activeUser.uid);
+        } else {
+          return [{}];
+        }
+      }).subscribe(
+        (item) => {
+          this.activeUser = item;
+          if (this.activeUser.length > 0) {
+            this.activeUser = this.activeUser[0].name;
+          }
+        }
+      );
     this.route.params.flatMap(
       (params) => this.articleService.getArticle(params['id'])
     ).flatMap(
@@ -33,16 +49,21 @@ export class MainArticleDetailComponent implements OnInit, DoCheck {
         this.article = article;
         this.article = article[0];
         this.initForm();
-        return this.userService.getUser(this.activeUser.uid);
+        return this.userService.getUser(this.article.author);
       }
       ).subscribe(
       (item) => {
         this.user = item;
-        const div = document.getElementById("text");
-        div.innerText = this.article.text;
         this.user = this.user[0].name;
       }
       );
+  }
+
+  ngAfterViewChecked() {
+    this.textSection = document.getElementById("text");
+    if (this.article) {
+      this.textSection.innerText = this.article.text;
+    }
   }
 
   initForm() {
@@ -60,10 +81,12 @@ export class MainArticleDetailComponent implements OnInit, DoCheck {
   onSubmit() {
     const newComment = {
       'comment': this.commentForm.value['comment'],
-      'user': this.user,
-      'article': this.article.aid
+      'user': this.activeUser,
+      'article': this.article.aid,
+      'time': new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString()
     };
     this.articleService.addComment(newComment);
+    this.commentForm.reset();
   }
 }
 
