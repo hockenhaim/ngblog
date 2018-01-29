@@ -12,6 +12,7 @@ import 'rxjs/add/operator/mergeMap';
 export class UserDetailComponent implements OnInit{
   id: string;
   userForm: FormGroup;
+  userRole: string;
   editMode = false;
   user;
 
@@ -34,6 +35,7 @@ export class UserDetailComponent implements OnInit{
       })
       .subscribe((item) => {
         this.user = item;
+        this.userRole = this.user[0].role;
         this.initForm();
       });
   }

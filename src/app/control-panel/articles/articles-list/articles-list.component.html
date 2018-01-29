@@ -10,18 +10,18 @@
 </div>
 <hr>
 <div class="row">
-    <div *ngIf="role === 'admin'" class="col-xs-12">
+    <div *ngIf="role !== 'user'" class="col-xs-12">
         <app-article-item
-            *ngFor="let articleElement of articles | paginate: { itemsPerPage: 10, currentPage: p }"
+            *ngFor="let articleElement of articles | paginate: { itemsPerPage: 7, currentPage: p }"
             [article]="articleElement"
         ></app-article-item>
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <pagination-controls *ngIf="articlesAmount > 7" (pageChange)="p = $event"></pagination-controls>
     </div>
-    <div *ngIf="role !== 'admin'" class="col-xs-12">
+    <div *ngIf="role === 'user'" class="col-xs-12">
         <app-article-item
-            *ngFor="let articleElement of userArticles | paginate: { itemsPerPage: 10, currentPage: p }"
+            *ngFor="let articleElement of userArticles | paginate: { itemsPerPage: 7, currentPage: p }"
             [article]="articleElement"
         ></app-article-item>
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <pagination-controls *ngIf="userArticlesAmount > 7" (pageChange)="p = $event"></pagination-controls>
     </div>
 </div>

@@ -39,6 +39,7 @@ import { MainArticleDetailComponent } from './home/main/main-article-detail/main
 import { MainCommentDetailComponent } from './home/main/main-article-detail/main-comment-detail/main-comment-detail.component';
 import { AuthGuard } from './auth-guard.service';
 import { AgmCoreModule } from '@agm/core';
+import { NotFoundComponent } from './home/not-found/not-found.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { AgmCoreModule } from '@agm/core';
     MainComponent,
     MainArticleComponent,
     MainArticleDetailComponent,
-    MainCommentDetailComponent
+    MainCommentDetailComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

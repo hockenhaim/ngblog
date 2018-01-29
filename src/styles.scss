@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 ul.ngx-pagination {
   margin-top: 10px;
+  padding: 0;
   text-align: center;
   font-size: 1.7rem;
 }
@@ -30,5 +31,11 @@ ngx-carousel .ngxcarouselPointDefault[_ngcontent-c4] .ngxcarouselPoint[_ngconten
   &:active {
     box-shadow: 0 4px #666;
     transform: translateY(4px);
+  }
+}
+
+@media (max-width: 992px) {
+  .action-button{
+    padding: 10px 20px;
   }
 }

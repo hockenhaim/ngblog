@@ -16,6 +16,7 @@ import { MainArticleComponent } from './home/main/main-article/main-article.comp
 import { MainArticleDetailComponent } from './home/main/main-article-detail/main-article-detail.component';
 import { MainCommentDetailComponent } from './home/main/main-article-detail/main-comment-detail/main-comment-detail.component';
 import { AuthGuard } from './auth-guard.service';
+import { NotFoundComponent } from './home/not-found/not-found.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, children: [
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
     { path: 'article/:id', component: MainArticleDetailComponent},
     { path: 'article/:id', component: MainCommentDetailComponent},
     { path: 'contact', component: ContactComponent},
+    { path: 'not-found', component: NotFoundComponent},
   ]},
   { path: 'login', component: LoginComponent},
   { path: 'control-panel', canActivateChild: [AuthGuard], component: ControlPanelComponent, children: [
@@ -40,6 +42,7 @@ const appRoutes: Routes = [
       { path: ':id', component: ArticleDetailComponent},
     ]},
   ]},
+  { path: '**', redirectTo: '/not-found'}
 ];
 
 @NgModule({

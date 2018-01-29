@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyCHqfRF3J_P_iS1GFOlT_Al8OH0deN1UcM",
-    authDomain: "ngblog-epam-vin.firebaseapp.com",
-    databaseURL: "https://ngblog-epam-vin.firebaseio.com",
-    projectId: "ngblog-epam-vin",
+    apiKey: "AIzaSyAVDwAGaQLxZSmZaPmXvd7Pa0lWNQ0HOXY",
+    authDomain: "ngblog-vin.firebaseapp.com",
+    databaseURL: "https://ngblog-vin.firebaseio.com",
+    projectId: "ngblog-vin",
     storageBucket: "",
-    messagingSenderId: "31619943925"
+    messagingSenderId: "335924040755"
   }
 };

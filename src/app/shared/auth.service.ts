@@ -12,7 +12,7 @@ import * as firebase from 'firebase/app';
 
 export class AuthService {
   private isUserExists: boolean;
-  public profilePlaceholder = '../../assets/profile_placeholder.png';
+  public profilePlaceholder = 'assets/profile_placeholder.png';
   private authState: Observable<firebase.User>;
   private currentUser: firebase.User = null;
 

@@ -12,6 +12,8 @@ import { UserService } from '../../users/user.service';
 export class ArticlesListComponent implements OnInit {
   articles: any;
   userArticles = [];
+  articlesAmount: number;
+  userArticlesAmount: number;
   user;
   role;
   uid;
@@ -44,6 +46,9 @@ export class ArticlesListComponent implements OnInit {
 
   ngDoCheck() {
     this.articles = this.articleService.getArticles();
+    if (this.articles) {
+      this.articlesAmount = this.articles.length;
+    }
     this.userArticles = [];
     if (this.uid && this.articles) {
       let count = 0;
@@ -53,6 +58,7 @@ export class ArticlesListComponent implements OnInit {
             count++;
             while (this.userArticles.length < count) {
               this.userArticles.push(val);
+              this.userArticlesAmount = this.userArticles.length;
             }
           }
         }

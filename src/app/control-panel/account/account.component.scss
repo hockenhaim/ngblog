@@ -1,5 +1,9 @@
+.row {
+  text-align: center;
+}
+
 .image {
-  height: 180px;
-  width: 180px;
-  border-radius: 50% 50% 0 0;
+  display: inline-block;
+  width: 300px;
+  border-radius: 50%;
 }
