@@ -12,10 +12,8 @@ export class MainCommentDetailComponent implements OnInit {
   constructor(private articleService: ArticleService) { }
 
   ngOnInit() {
+    this.articleService.getComments().subscribe(
+      (item) => this.comments = item
+    );
   }
-
-  ngDoCheck() {
-    this.comments = this.articleService.getComments();
-  }
-
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 
@@ -7,7 +7,7 @@ import { UserService } from '../user.service';
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss']
 })
-export class UsersListComponent implements OnInit, DoCheck {
+export class UsersListComponent implements OnInit {
   users: any;
 
   constructor(private userService: UserService,
@@ -15,11 +15,9 @@ export class UsersListComponent implements OnInit, DoCheck {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    
-  }
-
-  ngDoCheck() {
-    this.users = this.userService.getUsers();
+    this.userService.getUsers().subscribe(
+      (item) => this.users = item
+    );
   }
 
   addNewUser() {

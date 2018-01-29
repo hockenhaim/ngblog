@@ -55,11 +55,13 @@ export class ArticleDetailComponent implements OnInit {
     let articleTitle = '';
     let articleImagePath = '';
     let articleText = '';
+    let articleCategory = '';
 
     if (this.editMode) {
       articleTitle = this.article[0].title;
       articleImagePath = this.article[0].profile_picture;
       articleText = this.article[0].text;
+      articleCategory = this.article[0].category;
       this.authorName = this.article[0].author;
 
       this.userService.getUser(this.authorName).subscribe(
@@ -78,6 +80,7 @@ export class ArticleDetailComponent implements OnInit {
       'title': new FormControl(articleTitle, Validators.required),
       'imagePath': new FormControl(articleImagePath, Validators.required),
       'text': new FormControl(articleText, Validators.required),
+      'category': new FormControl(articleCategory, Validators.required),
     });
   }
 
@@ -85,13 +88,15 @@ export class ArticleDetailComponent implements OnInit {
     const updatedArticle = {
       'title': this.articleForm.value['title'],
       'profile_picture': this.articleForm.value['imagePath'],
-      'text': this.articleForm.value['text']
+      'text': this.articleForm.value['text'],
+      'category': this.articleForm.value['category'],
     };
     const newArticle = {
       'title': this.articleForm.value['title'],
       'profile_picture': this.articleForm.value['imagePath'],
       'text': this.articleForm.value['text'],
       'author': this.author.uid,
+      'category': this.articleForm.value['category'],
       'added' : new Date().toISOString().slice(0,10)
     };
     if (this.editMode) {

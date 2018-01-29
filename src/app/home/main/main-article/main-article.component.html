@@ -4,6 +4,7 @@
   </div>
   <div class="col-xs-12 col-md-7">
       <a [routerLink]="['/article', article.aid]"><h4 class="title">{{article.title}}</h4></a>
+      <span class="category">{{article.category}}</span>
       <p class="author">{{article.added}} by <strong>{{authorName}}</strong></p>
       <a [routerLink]="['/article', article.aid]"><button class="action-button continue-btn">More detailed</button></a>
   </div>

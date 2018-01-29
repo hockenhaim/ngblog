@@ -1,5 +1,5 @@
 import { ArticleService } from './../../../control-panel/articles/article.service';
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../control-panel/users/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -11,7 +11,7 @@ import 'rxjs/add/operator/first';
   templateUrl: './main-article-detail.component.html',
   styleUrls: ['./main-article-detail.component.scss']
 })
-export class MainArticleDetailComponent implements OnInit, DoCheck {
+export class MainArticleDetailComponent implements OnInit {
   textSection;
   activeUser;
   articles;
@@ -35,12 +35,12 @@ export class MainArticleDetailComponent implements OnInit, DoCheck {
           return [{}];
         }
       }).subscribe(
-        (item) => {
-          this.activeUser = item;
-          if (this.activeUser.length > 0) {
-            this.activeUser = this.activeUser[0].name;
-          }
+      (item) => {
+        this.activeUser = item;
+        if (this.activeUser.length > 0) {
+          this.activeUser = this.activeUser[0].name;
         }
+      }
       );
     this.route.params.flatMap(
       (params) => this.articleService.getArticle(params['id'])
@@ -57,6 +57,12 @@ export class MainArticleDetailComponent implements OnInit, DoCheck {
         this.user = this.user[0].name;
       }
       );
+    this.articleService.getAllArticles().subscribe(
+      (item) => {
+        this.articles = item;
+        this.articles.reverse();
+      }
+    )
   }
 
   ngAfterViewChecked() {
@@ -72,10 +78,6 @@ export class MainArticleDetailComponent implements OnInit, DoCheck {
     this.commentForm = new FormGroup({
       'comment': new FormControl(comment, Validators.required)
     })
-  }
-
-  ngDoCheck() {
-    this.articles = this.articleService.getArticles();
   }
 
   onSubmit() {

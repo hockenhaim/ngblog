@@ -5,24 +5,20 @@ import "rxjs/add/operator/take";
 
 @Injectable()
 export class ArticleService {
-  private articles;
-  private comments;
 
-  constructor(private _db: AngularFireDatabase) {
-    this._db.list('/articles').valueChanges().subscribe(
-      (item ) => {
-        this.articles = item;
-        this.articles.reverse();
-      }
-    );
-    this._db.list('/comments/').valueChanges().subscribe(
-      (item ) =>this.comments = item
-    );
-  }
+  constructor(private _db: AngularFireDatabase) {}
 
   getArticle(aid) {
     return this._db.list('/articles', ref => ref.orderByChild('aid').equalTo(aid)).valueChanges().take(1);
   }
+
+  getAllArticles() {
+    return this._db.list('/articles').valueChanges();
+  }
+
+  getArticlesByCategory(category) {
+    return this._db.list('/articles', ref => ref.orderByChild('category').equalTo(category)).valueChanges();
+  } 
 
   addArticle(newArticle, author) {
     this._db.list('/articles').push(newArticle).then((item) => { this._db.list('/articles').update(item.key, {aid: item.key}) });
@@ -33,7 +29,7 @@ export class ArticleService {
   }
 
   getComments() {
-    return this.comments;
+    return this._db.list('/comments/').valueChanges();
   }
 
   addComment(newComment) {
@@ -42,9 +38,5 @@ export class ArticleService {
 
   deleteArticle(aid) {
     this._db.list('/articles').remove(aid);
-  }
-
-  getArticles() {
-    return this.articles;
   }
 }

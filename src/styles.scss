@@ -20,16 +20,22 @@ ngx-carousel .ngxcarouselPointDefault[_ngcontent-c4] .ngxcarouselPoint[_ngconten
 
 .action-button {
   padding: 15px 40px;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
   cursor: pointer;
   background-color: #2196f3;
+  transition: background-color 1s ease;
   color: white;
   border: none;
   outline: none;
   border-radius: 3px;
+  &:hover {
+    border: 1px solid #2196f3;
+    color: #2196f3;
+    background-color: white;
+  }
   &:active {
-    box-shadow: 0 4px #666;
+    box-shadow: 0 4px #2196f3;
     transform: translateY(4px);
   }
 }

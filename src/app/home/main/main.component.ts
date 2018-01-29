@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../control-panel/users/user.service';
 import { ArticleService } from '../../control-panel/articles/article.service';
 import { Router } from '@angular/router';
@@ -9,7 +9,8 @@ import { AuthService } from '../../shared/auth.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit, DoCheck {
+export class MainComponent implements OnInit {
+  allArticles;
   articles;
   user;
   storage;
@@ -49,14 +50,31 @@ export class MainComponent implements OnInit, DoCheck {
           }
         }
       );
+      this.articleService.getAllArticles().subscribe(
+        (items) => {
+          this.articles = items;
+          this.allArticles = this.articles;
+          this.articles.reverse();
+        }
+      );
   }
 
   reverse() {
     this.articles.reverse();
   }
 
-  ngDoCheck() {
-    this.articles = this.articleService.getArticles();
+  getAllArticles() {
+    this.articles = this.allArticles;
+  }
+
+  getArticlesByCategory(category) {
+    this.articleService.getArticlesByCategory(category).subscribe(
+      (items) => {
+        this.articles = items;
+        this.articles.reverse();
+      }
+    );
+    
   }
 
   onShare() {

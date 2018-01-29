@@ -6,13 +6,8 @@ import "rxjs/add/operator/take";
 
 @Injectable()
 export class UserService {
-  private users;
 
-  constructor(private _db: AngularFireDatabase) {
-    this._db.list('/users').valueChanges().subscribe(
-      (item ) => this.users = item
-    );
-  }
+  constructor(private _db: AngularFireDatabase) {}
 
   getUser(uid) {
     return this._db.list('/users', ref => ref.orderByChild('uid').equalTo(uid)).valueChanges().take(1);
@@ -21,8 +16,6 @@ export class UserService {
   addUser(newUser) {
     this._db.list('/users').push(newUser).then((item) => { this._db.list('/users').update(item.key, {uid: item.key}) });
   }
-
-
 
   updateUser(uid, newUser) {
     this._db.list('/users').update(uid, newUser);
@@ -33,6 +26,6 @@ export class UserService {
   }
 
   getUsers() {
-    return this.users;
+    return this._db.list('/users').valueChanges();
   }
 }

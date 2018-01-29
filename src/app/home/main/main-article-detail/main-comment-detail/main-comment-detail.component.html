@@ -1,13 +1,12 @@
-<div>
-  <h2>Comments:</h2>
+<div class="comments-list">
   <div *ngFor="let comment of comments">
-    <div *ngIf="comment.article === article.aid" class="list-group-item">
-      <div>
-          <h6 class="list-group-item-heading">by {{ comment.user }} - {{comment.time}}</h6>
-      </div>
-      <div>
-          <p class="list-group-item-heading">{{comment.comment}}</p>
+      <div *ngIf="comment.article === article.aid" class="list-group-item">
+        <div>
+            <h6 class="list-group-item-heading">by {{ comment.user }} - {{comment.time}}</h6>
+        </div>
+        <div>
+            <p class="list-group-item-heading">{{comment.comment}}</p>
+        </div>
       </div>
     </div>
-  </div>
 </div>

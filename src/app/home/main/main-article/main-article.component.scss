@@ -12,12 +12,20 @@
   border-bottom: 1px solid #2196f3;
 }
 
-.description {
+.category {
   margin: 15px 0px;
+  font-weight: bold;
 }
 
 .continue-btn {
-  margin-top: 30px;
-  padding: 5px 15px;
+  margin-top: 20px;
+  padding: 4px 15px;
   font-size: 17px;
+}
+
+.article-img {
+  transition: all .2s ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+  }
 }

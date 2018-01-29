@@ -17,14 +17,14 @@
 
 .share-article {
   text-align: center;
-  margin: 50px 0px;
+  margin: 25px 0px;
   background-color: white;
   padding: 14px;
 }
 
 .categories {
   background-color: white;
-  padding: 25px;
+  padding: 15px;
 }
 
 .category-header {
@@ -34,21 +34,11 @@
 .category-list {
   list-style-type: none;
   padding: 0;
+  text-align: center;
 }
 
 .category-list-item {
   margin-top: 15px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid black;
-  font-size: 1.2em;
-  font-weight: 400;
-  cursor: pointer;
-  &:hover {
-    font-size: 1.4em;
-  }
-  &:active {
-    transform: translateY(4px);
-  }
 }
 
 .photo {
@@ -74,9 +64,37 @@
   }
 }
 
+.revert-button {
+  min-width: 160px;
+  background-color: white;
+  transition: background-color 0.7s ease;
+  color: #2196f3;
+  border: 1px solid #2196f3;
+  &:hover {
+    background-color: #2196f3;
+    color: white;
+  }
+  &:focus {
+    background-color: #2196f3;
+    color: white;
+  }
+}
+
 
 @media (max-width: 769px) {
   .sidebar {
     display: none;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .revert-button {
+    min-width: 120px;
+    font-size: 20px;
+  }
+  .categories {
+    background-color: white;
+    padding: 10px;
   }
 }

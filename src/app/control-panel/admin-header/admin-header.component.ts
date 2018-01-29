@@ -34,10 +34,6 @@ export class AdminHeaderComponent implements OnInit {
       );
   }
 
-  ngDoCheck() {
-    
-  }
-
   logout() {
     this.authService.logout();
   }
