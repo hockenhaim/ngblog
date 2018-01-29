@@ -9,20 +9,43 @@
 }
 
 agm-map {
-  height: 400px;
+  height: 700px;
+}
+
+.info {
+  height: 700px;
 }
 
 .contact {
   display: flex;
   flex-direction: column;
-  margin: 30px 0px;
+  font-size: 1.5em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .contact-item {
+  display: flex;
   align-self: center;
   margin: 10px;
 }
 
+.contact-item-img {
+  align-self: center;
+}
+
+.contact-header {
+  font-size: 1.8em;
+}
+
 .contact-info {
   margin-left: 10px;
+}
+
+@media (max-width: 400px) {
+  .contact {
+    font-size: 1.2em;
+  }
 }

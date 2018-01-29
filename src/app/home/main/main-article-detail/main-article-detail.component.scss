@@ -8,6 +8,7 @@
 
 .article-image {
   max-width: 700px;
+  margin: 15px 0px;
 }
 
 .feed {
@@ -37,5 +38,17 @@
 @media (max-width: 1200px) {
   .feed {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .article-image {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 550px) {
+  .article-image {
+    max-width: 320px;
   }
 }

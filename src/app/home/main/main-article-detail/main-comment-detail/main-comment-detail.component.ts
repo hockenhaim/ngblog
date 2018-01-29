@@ -13,7 +13,10 @@ export class MainCommentDetailComponent implements OnInit {
 
   ngOnInit() {
     this.articleService.getComments().subscribe(
-      (item) => this.comments = item
+      (item) => {
+        this.comments = item;
+        this.comments.reverse();
+      }
     );
   }
 }

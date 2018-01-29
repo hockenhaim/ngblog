@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { NgxCarousel } from 'ngx-carousel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-
-  constructor() { }
+export class HeaderComponent implements OnInit, DoCheck {
+  hideHeader = false;
+  constructor(private router: Router) { }
 
   public carouselTileItems: Array<any>;
   public carouselTile: NgxCarousel;
  
   ngOnInit(){
+
     this.carouselTileItems = [
       'https://i1.wp.com/www.desktopanimated.com/img/Preview/Charm_Aquarium_Preview.jpg?resize=600%2C400',
       'http://www.mulierchile.com/golden-gate-wallpaper/golden-gate-wallpaper-009.jpg',
@@ -48,6 +50,14 @@ export class HeaderComponent implements OnInit {
       load: 2,
       touch: true,
       easing: 'ease'
+    }
+  }
+
+  ngDoCheck() {
+    if (this.router.url === '/') {
+      this.hideHeader = false;
+    } else {
+      this.hideHeader = true;
     }
   }
 

@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit, DoCheck {
   ngDoCheck() {
     if (this.user) {
       this.authService.writeUserData(this.user, this.newUser.display_name);
-      this.router.navigate(['/control-panel/articles']);
+      this.router.navigate(['/control-panel/account']);
     }
   }
 
